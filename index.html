@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Leandro</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ADICIONE ESTES ESTILOS AO SEU STYLE.CSS OU MANTENHA AQUI */
+        
+        /* Botão Hambúrguer */
+        .menu-toggle {
+            display: none; /* Escondido no desktop */
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            z-index: 1000;
+        }
+
+        .bar {
+            width: 30px;
+            height: 4px;
+            background-color: #555453;
+            transition: 0.4s;
+            border-radius: 2px;
+        }
+
+        /* Estilos Mobile */
+        @media (max-width: 1000px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .Menu {
+                position: fixed;
+                left: -100%; /* Escondido à esquerda */
+                top: 0;
+                flex-direction: column;
+                background-color: rgba(255, 255, 255, 0.98);
+                width: 100%;
+                height: 100vh;
+                justify-content: center;
+                align-items: center;
+                transition: 0.4s ease-in-out;
+                z-index: 999;
+            }
+
+            .Menu.active {
+                left: 0; /* Desliza para dentro da tela */
+            }
+
+            .Menu li {
+                margin: 20px 0;
+            }
+
+            .Menu li a {
+                font-size: 1.5rem;
+            }
+
+            /* Animação para transformar as barras em X */
+            .menu-toggle.is-active .bar:nth-child(1) {
+                transform: translateY(10px) rotate(45deg);
+            }
+            .menu-toggle.is-active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.is-active .bar:nth-child(3) {
+                transform: translateY(-10px) rotate(-45deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-container">
+        <h1 class="logo">Leandro</h1>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <ul class="Menu" id="nav-menu">
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Currículo</a></li>
+            <li><a href="#">Curiosidades</a></li>
+        </ul>
+    </header>
+
+    <main class="hoje"> 
+        <div class="foto-content">
+            <img src="https://iili.io/f8gFEBV.png" alt="Foto Leandro">
+        </div>
+
+        <div class="texto-content">
+            <img class="divisoria" src="https://iili.io/f8PhxYG.png" alt="divisor">
+            <p>
+                <strong>
+                    Jovem profissional de 23 anos, altamente motivado e com grande capacidade de aprendizagem.<br>
+                    Caracterizo-me pela minha energia, pontualidade e facilidade em trabalhar em equipa.<br>
+                    Disponível para abraçar novos desafios e contribuir de forma imediata para o crescimento da organização.
+                </strong>
+            </p>
+        </div>
+    </main>
+
+    <footer class="redes">
+        <a href="https://www.facebook.com/share/1C7MVEGVqS/" target="_blank">
+            <img class="re" src="https://iili.io/f8LPUQI.png" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com/leomagalhaes.__.80/" target="_blank">
+            <img class="ri" src="https://iili.io/f84osRV.png" alt="Instagram">
+        </a>
+        <a href="https://x.com/LeandroMag37606" target="_blank">
+            <img class="ro" src="https://iili.io/f84xDp2.png" alt="X">
+        </a>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        // Abre e fecha o menu ao clicar nas barras
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('is-active'); // Ativa a animação do X
+        });
+
+        // Fecha o menu automaticamente ao clicar em qualquer link (opcional)
+        document.querySelectorAll('.Menu li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('is-active');
+            });
+        });
+
+        // Bloqueia o clique direito (mantido do seu código original)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+    </script>
+
+</body>
+</html>
